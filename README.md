@@ -1,7 +1,7 @@
 # FAIO 2.0
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2-logo.png" width="50%" height="50%" alt="Open-GCI Logo"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2-logo.png" width="50%" height="50%" alt="FAIO Logo"/>
 </p>
 
 FAIO 2.0 is an open-source all in one switch interface that enables those with limited or no hand movement to use Adaptive switches as input to operate in multiple input modes.
@@ -76,7 +76,7 @@ These are all the files and documentation associated with the Open-GCI project.
 The FAIO 2.0 switch interface can operate in 4 modes and switch D is used to switch between them in USB and Bluetooth modes.The RGB Led blinks 2 times to indicate the current mode.
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2s.png" width="50%" height="50%" alt="Open-GCI Diagram"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2s.png" width="50%" height="50%" alt="Faio 2 boards"/>
 </p>
 
 ## USB or Bluetooth mode
@@ -114,6 +114,10 @@ The FAIO 2.0 switch interface can operate in 4 modes and switch D is used to swi
   </tr>
 </table> 
 
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2.png" width="50%" height="50%" alt="Faio 2 board"/>
+</p>
+
 ## XAC mode
 
  <table style="width:100%">
@@ -144,4 +148,28 @@ The FAIO 2.0 switch interface can operate in 4 modes and switch D is used to swi
   </tr>
 </table> 
 
+## Software Setup Instructions
 
+  1. Install the required libraries 
+  
+  1.1. Install Neo Pixels : https://github.com/adafruit/Adafruit_NeoPixel
+
+  1.2. Install EasyMorse if using USB or Bluetooth version : https://github.com/milador/EasyMorse
+  
+  1.3. Install StopWatch if using USB or Bluetooth version : https://github.com/RobTillaart/Arduino/tree/master/libraries/StopWatch
+  
+  1.4. Install FlashStorage if using Feather M0 Board : https://github.com/cmaglie/FlashStorage
+
+  1.5. Install Joystick library: https://github.com/MHeironimus/ArduinoJoystickLibrary or https://github.com/gdsports/ArduinoJoystickLibrary/tree/samd_patch
+  
+  2. Download the firmware 
+  
+  2.1. USB Firmware : https://github.com/milador/FAIO-2/raw/master/Software/FAIO_USB_Firmware/FAIO_USB_Firmware.ino
+
+  2.2. XAC Firmware : https://github.com/milador/FAIO-2/raw/master/Software/FAIO_XAC_Firmware/FAIO_XAC_Firmware.ino
+  
+  2.3. Bluetooth Firmware (Coming up)
+  
+  3. Setup Arduino IDE for your feather board according to the instructions on Adafruit website
+  
+  4. Verify and upload firmware code to your Feather Board
