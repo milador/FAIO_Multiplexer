@@ -75,8 +75,73 @@ These are all the files and documentation associated with the Open-GCI project.
 
 The FAIO 2.0 switch interface can operate in 4 modes and switch D is used to switch between them in USB and Bluetooth modes.The RGB Led blinks 2 times to indicate the current mode.
 
-
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2s.png" width="50%" height="50%" alt="Open-GCI Diagram"/>
 </p>
+
+## USB or Bluetooth mode
+
+ <table style="width:100%">
+  <tr>
+    <th>Mode Number</th>
+    <th>Mode</th>
+    <th>Color</th>
+  </tr>
+    <tr>
+    <td>1</td>
+    <td>Keyboard Switch</td>
+    <td>Green</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Morse Keyboard</td>
+    <td>Pink</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Morse Mouse</td>
+    <td>Yellow</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Joystick</td>
+    <td>Orange</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Configuration</td>
+    <td>Purple</td>
+  </tr>
+</table> 
+
+## XAC mode
+
+ <table style="width:100%">
+  <tr>
+    <th>Button Number</th>
+    <th>Xbox Button</th>
+    <th>Color</th>
+  </tr>
+    <tr>
+    <td>1</td>
+    <td>A</td>
+    <td>Green</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>B</td>
+    <td>Red</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>X1</td>
+    <td>Blue</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>X2</td>
+    <td>Yellow</td>
+  </tr>
+</table> 
+
 
