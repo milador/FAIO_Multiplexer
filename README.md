@@ -40,10 +40,10 @@ These are all the files and documentation associated with the Open-GCI project.
     <td><a href=""> </a></td>
   </tr>
   <tr>
-    <td>FAIO-2 BOM (XLSX)</td>
+    <td>FAIO-2 BOM (csv)</td>
     <td>February 18, 2019</td>
     <td>XLSX</td>
-    <td><a href="https://github.com/milador/FAIO-2/raw/master/FAIO-2_BOM.xlsx">FAIO-2_BOM.xlsx</a></td>
+    <td><a href="https://github.com/milador/FAIO-2/raw/master/FAIO-2_BOM.csv">FAIO-2_BOM.csv</a></td>
   </tr>
   <tr>
     <td>FAIO-2 USB Firmware</td>
