@@ -46,28 +46,28 @@ These are all the files and documentation associated with the Open-GCI project.
     <td><a href="https://github.com/milador/FAIO-2/blob/master/FAIO-2_BOM.csv">FAIO-2_BOM.csv</a></td>
   </tr>
   <tr>
-    <td>FAIO-2 USB Firmware</td>
+    <td>FAIO-2 USB Switch Software</td>
     <td>1.0</td>
     <td>Ino</td>
-    <td><a href="https://github.com/milador/FAIO-2/raw/master/Software/FAIO_USB_Firmware/FAIO_USB_Firmware.ino">FAIO_USB_Firmware.ino</a></td>
+    <td><a href="https://github.com/milador/FAIO-2/raw/master/Software/FAIO_USB_Switch_Software/FAIO_USB_Switch_Software.ino">FAIO_USB_Switch_Software.ino</a></td>
   </tr>
   <tr>
-    <td>FAIO-2 XAC Firmware</td>
+    <td>FAIO-2 XAC Software</td>
     <td>1.0</td>
     <td>Ino</td>
-    <td><a href="https://github.com/milador/FAIO-2/raw/master/Software/FAIO_XAC_Firmware/FAIO_XAC_Firmware.ino">FAIO_XAC_Firmware.ino</a></td>
+    <td><a href="https://github.com/milador/FAIO-2/raw/master/Software/FAIO_XAC_Software/FAIO_XAC_Software.ino">FAIO_XAC_Software.ino</a></td>
   </tr>
   <tr>
-    <td>FAIO-2 Board Layout</td>
+    <td>FAIO-2 Switch Board Layout</td>
     <td>1.0</td>
     <td>BRD</td>
-    <td><a href="https://raw.githubusercontent.com/milador/FAIO-2/master/Hardware/PCB_design/FAIO2.brd">FAIO2.brd</a></td>
+    <td><a href="https://raw.githubusercontent.com/milador/FAIO-2/master/Hardware/PCB_design/FAIO2_Switch.brd">FAIO2_Switch.brd</a></td>
   </tr>
   <tr>
-    <td>FAIO-2 Board Schematic</td>
+    <td>FAIO-2 Switch Board Schematic</td>
     <td>1.0</td>
     <td>SCH</td>
-    <td><a href="https://raw.githubusercontent.com/milador/FAIO-2/master/Hardware/PCB_design/FAIO2.sch">FAIO-2.sch</a></td>
+    <td><a href="https://raw.githubusercontent.com/milador/FAIO-2/master/Hardware/PCB_design/FAIO2_Switch.sch">FAIO2_Switch.sch</a></td>
   </tr>
 </table> 
 
