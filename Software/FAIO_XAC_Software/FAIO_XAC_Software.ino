@@ -16,8 +16,8 @@
 //F::::::::FF            A:::::A                 A:::::A I::::::::I   OO:::::::::OO        2::::::::::::::::::2 .::::.    00:::::::::00   
 //FFFFFFFFFFF           AAAAAAA                   AAAAAAAIIIIIIIIII     OOOOOOOOO          22222222222222222222 ......      000000000    
 
-//FAIO 2 XAC Firmware
-//FAIO_XAC_Firmware
+//FAIO 2 XAC Software
+//FAIO_XAC_Software
 //Written by: Milad Hajihassan
 //Version 1.0 (3/2/2019)
 //Github Link: https://github.com/milador/FAIO-2
@@ -183,7 +183,7 @@ void displayFeatureList(void) {
   Serial.println(" --- ");
   Serial.println(" ");
 
-}
+} 
 
 //***RGB LED FUNCTION***//
 

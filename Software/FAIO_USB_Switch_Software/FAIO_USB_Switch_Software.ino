@@ -16,21 +16,27 @@
 //F::::::::FF            A:::::A                 A:::::A I::::::::I   OO:::::::::OO        2::::::::::::::::::2 .::::.    00:::::::::00   
 //FFFFFFFFFFF           AAAAAAA                   AAAAAAAIIIIIIIIII     OOOOOOOOO          22222222222222222222 ......      000000000    
 
-//FAIO 2 USB Firmware
-//FAIO_USB_Firmware
+//FAIO 2 USB Switch Software
+//FAIO_USB_Switch_Software
 //Written by: Milad Hajihassan
-//Version 1.0 (3/2/2019)
+//Version 1.0 (23/2/2019)
 //Github Link: https://github.com/milador/FAIO-2
 
 #include "Mouse.h"
 #include "Keyboard.h"
 #include <StopWatch.h>
-#include <FlashStorage.h>
 #include "EasyMorse.h"
 #include "Joystick.h"
 #include <math.h>
 #include <Adafruit_NeoPixel.h>
 
+//Use FlashStorage library for M0 Boards and EEPROM for Atmega32U4 boards
+#ifdef defined(ARDUINO_SAMD_FEATHER_M0)
+#include <FlashStorage.h>
+#endif
+#ifdef defined(__AVR_Atmega32U4__)
+#include <EEPROM.h>
+#endif
 
 //Can be changed based on the needs of the users 
 #define FIXED_DELAY 30
@@ -79,11 +85,13 @@ int switchDelay;
 int switchSpeedLevel;
 int switchMode;
 
-
 //Declare Flash storage variables 
+#ifdef defined(ARDUINO_SAMD_FEATHER_M0)
 FlashStorage(switchConfiguredFlash, int);
 FlashStorage(switchSpeedLevelFlash, int);
 FlashStorage(switchModeFlash, int);
+#endif
+
 
 //RGB LED Color code structure 
 
@@ -233,7 +241,7 @@ void displayFeatureList(void) {
   Serial.println(" --- ");
   Serial.println("This is the FAIO 2 USB firmware");
   Serial.println(" ");
-  Serial.println("VERSION: 1.0 (3 Jan 2019)");
+  Serial.println("VERSION: 1.0 (23 Jan 2019)");
   Serial.println(" ");
   Serial.println(" --- ");
   Serial.println("Features: Adaptive switch, Morse Keyboard, Morse Mouse, and Joystick");
@@ -301,7 +309,14 @@ void switchHidSetup(){
 
 void switchSetup() {
   //Check if it's first time running the code
+  #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
   switchConfigured = switchConfiguredFlash.read();
+  #endif
+  #ifdef defined(__AVR_Atmega32U4__)
+  EEPROM.get(22, switchConfigured);
+  delay(5);
+    if(switchConfigured<0){ switchConfigured = 0; } 
+  #endif
   if (switchConfigured==0) {
     //Define default settings if it's first time running the code
     switchSpeedLevel=6;
@@ -309,13 +324,31 @@ void switchSetup() {
     switchConfigured=1;
 
     //Write default settings to flash storage 
+    #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
     switchSpeedLevelFlash.write(switchSpeedLevel);
     switchModeFlash.write(switchMode);
     switchConfiguredFlash.write(switchConfigured);
+    #endif
+    #ifdef defined(__AVR_Atmega32U4__)
+    EEPROM.put(6, switchSpeedLevel);
+    delay(5);
+    EEPROM.put(4, switchMode);
+    delay(5);
+    EEPROM.put(2, switchConfigured);
+    delay(5);
+    #endif
   } else {
     //Load settings from flash storage if it's not the first time running the code
+    #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
     switchSpeedLevel=switchSpeedLevelFlash.read();
     switchMode=switchModeFlash.read();
+    #endif
+    #ifdef defined(__AVR_Atmega32U4__)
+    EEPROM.get(6, switchSpeedLevel);
+    delay(5);
+    EEPROM.get(4, switchMode);
+    delay(5);
+    #endif    
   }  
 
     //Serial print settings 
@@ -612,8 +645,14 @@ void changeSwitchMode(){
     Serial.print("Switch Mode: ");
     Serial.println(switchMode);
     
-    //Save switch mode in flash storage 
+    //Save switch mode in flash storage
+    #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
     switchModeFlash.write(switchMode);
+    #endif
+    #ifdef defined(__AVR_Atmega32U4__)
+    EEPROM.put(4, switchMode);
+    delay(5);
+    #endif
     delay(25);
 }
 
@@ -642,7 +681,13 @@ void increaseSpeed(void) {
   }
   Serial.print("Speed level: ");
   Serial.println(switchSpeedLevel);
+  #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
   switchSpeedLevelFlash.write(switchSpeedLevel);
+  #endif
+  #ifdef defined(__AVR_Atmega32U4__)
+  EEPROM.put(6, switchSpeedLevel);
+  delay(5);
+  #endif
   delay(25);
 }
 
@@ -660,6 +705,12 @@ void decreaseSpeed(void) {
   } 
   Serial.print("Speed level: ");
   Serial.println(switchSpeedLevel);
+  #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
   switchSpeedLevelFlash.write(switchSpeedLevel);
+  #endif
+  #ifdef defined(__AVR_Atmega32U4__)
+  EEPROM.put(6, switchSpeedLevel);
+  delay(5);
+  #endif
   delay(25);
 }
