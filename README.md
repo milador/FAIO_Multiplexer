@@ -52,7 +52,7 @@ These are all the files and documentation associated with the Open-GCI project.
     <td><a href="https://github.com/milador/FAIO-2/raw/master/Software/FAIO_USB_Switch_Software/FAIO_USB_Switch_Software.ino">FAIO_USB_Switch_Software.ino</a></td>
   </tr>
   <tr>
-    <td>FAIO-2 XAC Software</td>
+    <td>FAIO-2 XAC Switch Software</td>
     <td>1.0</td>
     <td>Ino</td>
     <td><a href="https://github.com/milador/FAIO-2/raw/master/Software/FAIO_XAC_Software/FAIO_XAC_Software.ino">FAIO_XAC_Software.ino</a></td>
