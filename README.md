@@ -69,6 +69,18 @@ These are all the files and documentation associated with the Open-GCI project.
     <td>SCH</td>
     <td><a href="https://raw.githubusercontent.com/milador/FAIO-2/master/Hardware/PCB_design/FAIO2_Switch.sch">FAIO2_Switch.sch</a></td>
   </tr>
+   <tr>
+    <td>FAIO-2 Sip and Puff Board Layout</td>
+    <td>1.0</td>
+    <td>BRD</td>
+    <td><a href="https://raw.githubusercontent.com/milador/FAIO-2/master/Hardware/PCB_design/FAIO2_Sip-n-Puff.brd">FAIO2_Sip-n-Puff.brd</a></td>
+  </tr>
+  <tr>
+    <td>FAIO-2 Sip and Puff Board Schematic</td>
+    <td>1.0</td>
+    <td>SCH</td>
+    <td><a href="https://raw.githubusercontent.com/milador/FAIO-2/master/Hardware/PCB_design/FAIO2_Sip-n-Puff.sch">FAIO2_Sip-n-Puff.sch</a></td>
+  </tr>
 </table> 
 
 # Usage
