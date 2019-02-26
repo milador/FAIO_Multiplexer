@@ -4,17 +4,22 @@
 <img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2-logo.png" width="50%" height="50%" alt="FAIO Logo"/>
 </p>
 
-FAIO 2.0 is an open-source all in one switch interface that enables those with limited or no hand movement to use Adaptive switches as input to operate in multiple input modes.
+FAIO 2.0 is an open-source all in one switch interface that enables those with limited or no hand movement to use Adaptive switches or Sip and puff as input to operate in multiple input modes.
 
-The Supported modes include:
+The Supported Switch modes include:
 
 * Switch Access Mode ( HID Keyboard )
 * Morse Keyboard Mode ( HID Keyboard )
 * Morse Mouse Mode ( HID Mouse )
 * Joystick Mode ( HID Joystick )
 
-Additional firmware to operate Xbox Adaptive Controller is available as well.
+Additional firmware to operate Xbox Adaptive Controller using switch module is available as well.
 
+The Supported Sip and puff modes include:
+
+* Switch Access Mode ( HID Keyboard )
+* Morse Keyboard Mode ( HID Keyboard )
+* Morse Mouse Mode ( HID Mouse )
 
 # Downloads 
 
@@ -40,10 +45,10 @@ These are all the files and documentation associated with the Open-GCI project.
     <td><a href=""> </a></td>
   </tr>
   <tr>
-    <td>FAIO-2 BOM (csv)</td>
+    <td>FAIO-2 Switch BOM (csv)</td>
     <td>February 18, 2019</td>
     <td>CSV</td>
-    <td><a href="https://github.com/milador/FAIO-2/blob/master/FAIO-2_BOM.csv">FAIO-2_BOM.csv</a></td>
+    <td><a href="https://github.com/milador/FAIO-2/blob/master/Components/FAIO-2_Switch_BOM.csv">FAIO-2_Switch_BOM.csv</a></td>
   </tr>
   <tr>
     <td>FAIO-2 USB Switch Software</td>
@@ -83,9 +88,13 @@ These are all the files and documentation associated with the Open-GCI project.
   </tr>
 </table> 
 
-# Usage
+# Switch mode Usage
 
 The FAIO 2.0 switch interface can operate in 4 modes and switch D is used to switch between them in USB and Bluetooth modes.The RGB Led blinks 2 times to indicate the current mode.
+
+# Sip and puff mode Usage
+
+The FAIO 2.0 Sip and puff interface can operate in 3 modes and switch A is used to switch between them in USB and Bluetooth modes.The RGB Led blinks 2 times to indicate the current mode.
 
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2s.png" width="50%" height="50%" alt="Faio 2 boards"/>
