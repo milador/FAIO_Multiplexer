@@ -91,7 +91,7 @@ The FAIO 2.0 switch interface can operate in 4 modes and switch D is used to swi
 <img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2s.png" width="50%" height="50%" alt="Faio 2 boards"/>
 </p>
 
-## USB or Bluetooth mode
+## USB or Bluetooth Switch mode
 
  <table style="width:100%">
   <tr>
@@ -130,7 +130,7 @@ The FAIO 2.0 switch interface can operate in 4 modes and switch D is used to swi
 <img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2.png" width="50%" height="50%" alt="Faio 2 board"/>
 </p>
 
-## XAC mode
+## XAC Switch mode
 
  <table style="width:100%">
   <tr>
