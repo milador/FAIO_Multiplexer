@@ -92,13 +92,14 @@ These are all the files and documentation associated with the Open-GCI project.
 
 The FAIO 2.0 switch interface can operate in 4 modes and switch D is used to switch between them in USB and Bluetooth modes.The RGB Led blinks 2 times to indicate the current mode.
 
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2s.png" width="50%" height="50%" alt="Faio 2 boards"/>
+</p>
+
 # Sip and puff mode Usage
 
 The FAIO 2.0 Sip and puff interface can operate in 3 modes and switch A is used to switch between them in USB and Bluetooth modes.The RGB Led blinks 2 times to indicate the current mode.
 
-<p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2s.png" width="50%" height="50%" alt="Faio 2 boards"/>
-</p>
 
 ## USB or Bluetooth Switch mode
 
