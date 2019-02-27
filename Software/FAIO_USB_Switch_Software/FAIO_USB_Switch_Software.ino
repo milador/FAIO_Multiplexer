@@ -31,10 +31,9 @@
 #include <Adafruit_NeoPixel.h>
 
 //Use FlashStorage library for M0 Boards and EEPROM for Atmega32U4 boards
-#ifdef defined(ARDUINO_SAMD_FEATHER_M0)
+#if defined(ARDUINO_SAMD_FEATHER_M0)
 #include <FlashStorage.h>
-#endif
-#ifdef defined(__AVR_Atmega32U4__)
+#elif defined(__AVR_Atmega32U4__)
 #include <EEPROM.h>
 #endif
 
@@ -86,7 +85,7 @@ int switchSpeedLevel;
 int switchMode;
 
 //Declare Flash storage variables 
-#ifdef defined(ARDUINO_SAMD_FEATHER_M0)
+#if defined(ARDUINO_SAMD_FEATHER_M0)
 FlashStorage(switchConfiguredFlash, int);
 FlashStorage(switchSpeedLevelFlash, int);
 FlashStorage(switchModeFlash, int);
@@ -275,6 +274,7 @@ void ledClear() {
 //***SETUP SWITCH HID PROFILES FUNCTION (LOAD HID PROFILES)***//
 
 void switchHidSetup(){
+
     if (switchMode == 0) {
       Keyboard.begin();                                                             //Start keyboard emulation 
       Mouse.end();
@@ -309,12 +309,11 @@ void switchHidSetup(){
 
 void switchSetup() {
   //Check if it's first time running the code
-  #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
-  switchConfigured = switchConfiguredFlash.read();
-  #endif
-  #ifdef defined(__AVR_Atmega32U4__)
-  EEPROM.get(22, switchConfigured);
-  delay(5);
+  #if defined(ARDUINO_SAMD_FEATHER_M0)
+    switchConfigured = switchConfiguredFlash.read();
+  #elif defined(__AVR_Atmega32U4__)
+    EEPROM.get(22, switchConfigured);
+    delay(5);
     if(switchConfigured<0){ switchConfigured = 0; } 
   #endif
   if (switchConfigured==0) {
@@ -324,30 +323,28 @@ void switchSetup() {
     switchConfigured=1;
 
     //Write default settings to flash storage 
-    #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
-    switchSpeedLevelFlash.write(switchSpeedLevel);
-    switchModeFlash.write(switchMode);
-    switchConfiguredFlash.write(switchConfigured);
-    #endif
-    #ifdef defined(__AVR_Atmega32U4__)
-    EEPROM.put(6, switchSpeedLevel);
-    delay(5);
-    EEPROM.put(4, switchMode);
-    delay(5);
-    EEPROM.put(2, switchConfigured);
-    delay(5);
+    #if defined(ARDUINO_SAMD_FEATHER_M0)
+      switchSpeedLevelFlash.write(switchSpeedLevel);
+      switchModeFlash.write(switchMode);
+      switchConfiguredFlash.write(switchConfigured);
+    #elif defined(__AVR_Atmega32U4__)
+      EEPROM.put(26, switchSpeedLevel);
+      delay(5);
+      EEPROM.put(24, switchMode);
+      delay(5);
+      EEPROM.put(22, switchConfigured);
+      delay(5);
     #endif
   } else {
     //Load settings from flash storage if it's not the first time running the code
-    #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
-    switchSpeedLevel=switchSpeedLevelFlash.read();
-    switchMode=switchModeFlash.read();
-    #endif
-    #ifdef defined(__AVR_Atmega32U4__)
-    EEPROM.get(6, switchSpeedLevel);
-    delay(5);
-    EEPROM.get(4, switchMode);
-    delay(5);
+    #if defined(ARDUINO_SAMD_FEATHER_M0)
+      switchSpeedLevel=switchSpeedLevelFlash.read();
+      switchMode=switchModeFlash.read();
+    #elif defined(__AVR_Atmega32U4__)
+      EEPROM.get(26, switchSpeedLevel);
+      delay(5);
+      EEPROM.get(24, switchMode);
+      delay(5);
     #endif    
   }  
 
@@ -484,7 +481,7 @@ void morseAction(int mode,int switch1,int switch2,int switch4) {
    timeNotPressed = SW[1].elapsed();
     if (timeNotPressed >= msMax && timeNotPressed >= msEnd && isShown == 0 && backspaceDone == 0) {
       if(mode==1) {
-        Keyboard.write(morse.getCharAscii());                                                  //Enter keyboard key based on ascii code if it's in morse keyboard mode
+       Keyboard.write(morse.getCharAscii());                                                  //Enter keyboard key based on ascii code if it's in morse keyboard mode
       } else if (mode==2) {  
         int* mouseAct;
         mouseAct=morse.getMouse();
@@ -498,6 +495,7 @@ void morseAction(int mode,int switch1,int switch2,int switch4) {
       SW[1].reset();
   }
   delay(switchDelay);
+  
 }
 
 
@@ -618,8 +616,8 @@ void joystickAction(int switch1,int switch2,int switch3,int switch4,int x,int y)
 //***CLEAR JOYSTICK ACTION FUNCTION***//
 
 void joystickClear(){
-    Joystick.setXAxis(0);
-    Joystick.setYAxis(0);  
+   Joystick.setXAxis(0);
+   Joystick.setYAxis(0);  
 }
 
 
@@ -646,12 +644,11 @@ void changeSwitchMode(){
     Serial.println(switchMode);
     
     //Save switch mode in flash storage
-    #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
-    switchModeFlash.write(switchMode);
-    #endif
-    #ifdef defined(__AVR_Atmega32U4__)
-    EEPROM.put(4, switchMode);
-    delay(5);
+    #if defined(ARDUINO_SAMD_FEATHER_M0)
+      switchModeFlash.write(switchMode);
+    #elif defined(__AVR_Atmega32U4__)
+      EEPROM.put(24, switchMode);
+      delay(5);
     #endif
     delay(25);
 }
@@ -681,12 +678,11 @@ void increaseSpeed(void) {
   }
   Serial.print("Speed level: ");
   Serial.println(switchSpeedLevel);
-  #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
-  switchSpeedLevelFlash.write(switchSpeedLevel);
-  #endif
-  #ifdef defined(__AVR_Atmega32U4__)
-  EEPROM.put(6, switchSpeedLevel);
-  delay(5);
+  #if defined(ARDUINO_SAMD_FEATHER_M0)
+    switchSpeedLevelFlash.write(switchSpeedLevel);
+  #elif defined(__AVR_Atmega32U4__)
+    EEPROM.put(26, switchSpeedLevel);
+    delay(5);
   #endif
   delay(25);
 }
@@ -705,12 +701,11 @@ void decreaseSpeed(void) {
   } 
   Serial.print("Speed level: ");
   Serial.println(switchSpeedLevel);
-  #ifdef defined(ARDUINO_SAMD_FEATHER_M0)
-  switchSpeedLevelFlash.write(switchSpeedLevel);
-  #endif
-  #ifdef defined(__AVR_Atmega32U4__)
-  EEPROM.put(6, switchSpeedLevel);
-  delay(5);
+  #if defined(ARDUINO_SAMD_FEATHER_M0)
+    switchSpeedLevelFlash.write(switchSpeedLevel);
+  #elif defined(__AVR_Atmega32U4__)
+    EEPROM.put(26, switchSpeedLevel);
+    delay(5);
   #endif
   delay(25);
 }
