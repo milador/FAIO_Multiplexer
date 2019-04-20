@@ -1,4 +1,4 @@
-# FAIO 2.0
+# FAIO Switch
 
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/milador/FAIO-2/master/Resources/Images/faio2-logo.png" width="50%" height="50%" alt="FAIO Logo"/>
