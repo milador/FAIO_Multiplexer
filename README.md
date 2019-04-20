@@ -13,7 +13,7 @@ Additional firmware to operate Xbox Adaptive Controller using switch module is a
 
 # Downloads 
 
-These are all the files and documentation associated with the Open-GCI project.
+These are all the files and documentation associated with the FAIO Multiplexer project.
 
  <table style="width:100%">
   <tr>
