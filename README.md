@@ -71,8 +71,7 @@ These are all the files and documentation associated with the Open-GCI project.
 The FAIO Multiplexer switch interface can operate in 4 modes and switch D is used to switch between them in USB and Bluetooth modes.The RGB Led blinks 2 times to indicate the current mode.
 
 <p align="center">
-<img align="center" src="https://raw.githubusercontent.com/milador/FAIO-Multiplexer
-/master/Resources/Images/faio_multiplexers.png" width="50%" height="50%" alt="FAIO-Multiplexer boards"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/FAIO-Multiplexer/master/Resources/Images/faio_multiplexers.png" width="50%" height="50%" alt="FAIO-Multiplexer boards"/>
 </p>
 
 ## USB or Bluetooth Switch mode
