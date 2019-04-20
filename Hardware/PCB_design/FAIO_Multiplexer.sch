@@ -918,7 +918,7 @@ type 0204, grid 7.5 mm</description>
 <sheets>
 <sheet>
 <plain>
-<text x="93.98" y="-55.88" size="1.778" layer="94">https://github.com/milador/FAIO</text>
+<text x="93.98" y="-55.88" size="1.778" layer="94">https://github.com/milador/FAIO-2</text>
 <text x="138.43" y="-45.72" size="2.286" layer="94">Milad Hajihassan</text>
 </plain>
 <instances>

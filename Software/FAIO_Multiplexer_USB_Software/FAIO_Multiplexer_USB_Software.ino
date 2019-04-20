@@ -16,11 +16,11 @@
 //F::::::::FF            A:::::A                 A:::::A I::::::::I   OO:::::::::OO        2::::::::::::::::::2 .::::.    00:::::::::00   
 //FFFFFFFFFFF           AAAAAAA                   AAAAAAAIIIIIIIIII     OOOOOOOOO          22222222222222222222 ......      000000000    
 
-//FAIO 2 USB Switch Software
-//FAIO_USB_Switch_Software
+//FAIO_Multiplexer USB Switch Software
+//FAIO_Multiplexer_USB_Software
 //Written by: Milad Hajihassan
 //Version 1.0 (23/2/2019)
-//Github Link: https://github.com/milador/FAIO-2
+//Github Link: https://github.com/milador/FAIO_Multiplexer
 
 #include "Mouse.h"
 #include "Keyboard.h"
