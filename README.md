@@ -64,6 +64,24 @@ These are all the files and documentation associated with the FAIO Multiplexer p
     <td>SCH</td>
     <td><a href="https://raw.githubusercontent.com/milador/FAIO_Multiplexer/master/Hardware/PCB_design/FAIO_Multiplexer.sch">FAIO_Multiplexer.sch</a></td>
   </tr>
+   <tr>
+    <td>FAIO_Multiplexer Battery Holder enclosure</td>
+    <td>1.0</td>
+    <td>STL</td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/FAIO_Multiplexer_Body_Battery_Holder.stl">FAIO_Multiplexer_Body_Battery_Holder.stl</a></td>
+  </tr>
+  <tr>
+    <td>FAIO_Multiplexer Bottom enclosure</td>
+    <td>1.0</td>
+    <td>STL</td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/FAIO_Multiplexer_Body_Bottom.stl">FAIO_Multiplexer_Body_Bottom.stl</a></td>
+  </tr>
+  <tr>
+    <td>FAIO_Multiplexer Top enclosure</td>
+    <td>1.0</td>
+    <td>STL</td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/FAIO_Multiplexer_Body_Top.stl">FAIO_Multiplexer_Body_Top.stl</a></td>
+  </tr>
 </table> 
 
 # Usage
