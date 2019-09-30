@@ -30,9 +30,9 @@ These are all the files and documentation associated with the FAIO Multiplexer p
   </tr>
   <tr>
     <td>FAIO_Multiplexer Manual</td>
-    <td></td>
+    <td>Version 1.0</td>
     <td>PDF</td>
-    <td><a href=""> </a></td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/FAIO_Multiplexer_Instructions_Manual.pdf">FAIO_Multiplexer_Instructions_Manual.pdf</a></td>
   </tr>
   <tr>
     <td>FAIO_Multiplexer Switch BOM (csv)</td>
