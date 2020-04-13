@@ -16,16 +16,14 @@
 //F::::::::FF            A:::::A                 A:::::A I::::::::I   OO:::::::::OO        2::::::::::::::::::2 .::::.    00:::::::::00   
 //FFFFFFFFFFF           AAAAAAA                   AAAAAAAIIIIIIIIII     OOOOOOOOO          22222222222222222222 ......      000000000    
 
-//FAIO_Multiplexer USB Switch Software
-//FAIO_Multiplexer_USB_Software
+//FAIO_Multiplexer Joystick Software
+//FAIO_Multiplexer_Joystick_Software
 //Written by: Milad Hajihassan
 //Version 1.0 (12/4/20120)
 //Github Link: https://github.com/milador/FAIO_Multiplexer
 
-#include "Mouse.h"
-#include "Keyboard.h"
+#include "Joystick.h"
 #include <StopWatch.h>
-#include "EasyMorse.h"
 #include <math.h>
 #include <Adafruit_NeoPixel.h>
 
@@ -38,9 +36,10 @@
 
 
 //Can be changed based on the needs of the users 
-#define MORSE_TIMEOUT 1000                                            //Maximum timeout (1000ms =1s)
-#define MORSE_REACTION_TIME 10                                        //Minimum time for a dot or dash switch action ( level 10 : (1.5^1)x10 =15ms , level 1 : (1.5^10)x10=570ms )
-#define MOUSE_MOVE_MULTI 2                                            //Morse mouse move multiplier 
+#define FIXED_SPEED_LEVEL 6
+#define FIXED_DELAY 30
+#define JOYSTICK_DEADZONE 5
+#define JOYSTICK_ENABLED false
 #define SWITCH_REACTION_TIME 50                                       //Minimum time for each switch action ( level 10 : 1x50 =50ms , level 1 : 10x50=500ms )
 #define SWITCH_MODE_CHANGE_TIME 2000                                  //How long to hold switch 4 to change mode 
 
@@ -55,7 +54,10 @@
 #define SWITCH3_PIN 11
 #define SWITCH4_PIN 6
 
-EasyMorse morse;
+//Define Joystick pins
+#define X_JOYSTICK_PIN A4
+#define Y_JOYSTICK_PIN A5  
+
 
 // Variable Declaration
 
@@ -65,16 +67,13 @@ int switch2State;
 int switch3State;
 int switch4State;
 
+//Declare joystick variables 
+int xJoystick;
+int yJoystick;
 
 //Stopwatches array used to time switch presses
-StopWatch timeWatcher[3];
 StopWatch switch4TimeWatcher[1];
 
-//Initialize time variables for morse code
-unsigned msMin = MS_MIN_DD;
-unsigned msMax = MS_MAX_DD;
-unsigned msEnd = MS_END;
-unsigned msClear = MS_CL;
 
 //Declare Switch variables for settings 
 int switchConfigured;
@@ -82,7 +81,6 @@ int switchReactionTime;
 int switchReactionLevel;
 int switchMode;
 
-int morseReactionTime;
 
 //Declare Flash storage variables 
 #if defined(ARDUINO_SAMD_FEATHER_M0)
@@ -118,10 +116,10 @@ typedef struct {
  //Switch structure 
 typedef struct { 
   uint8_t switchNumber;
-  String switchName;
-  uint8_t switchChar;
+  String switchButtonName;
+  uint8_t switchMode1ButtonNumber;
+  uint8_t switchMode2ButtonNumber;
   uint8_t switchColorNumber;
-  uint8_t switchMorseTimeMulti;
 } switchStruct;
 
 
@@ -146,10 +144,10 @@ const colorStruct colorProperty[] {
 
 //Switch properties 
 const switchStruct switchProperty[] {
-    {1,"DOT",'a',5,1},                             //{1=dot,"DOT",'a',5=blue,1=1xMORSE_REACTION}
-    {2,"DASH",'b',6,3},                            //{2=dash,"DASH",'b',6=red,3=3xMORSE_REACTION}
-    {3,"",'c',1,1},                                //{3,"",'c',1=green,1=1xMORSE_REACTION}
-    {4,"",'d',3,1}                                 //{4,"",'d',3=yellow,1=1xMORSE_REACTION}
+    {1,"X1",1,5,5},
+    {2,"X2",2,6,3},
+    {3,"A",3,7,1},
+    {4,"B",4,8,6}
 };
 
 //Settings Action properties 
@@ -162,9 +160,8 @@ const settingsActionStruct settingsProperty[] {
 
 //Mode properties 
 const modeStruct modeProperty[] {
-    {1,"Keyboard Switch",8},
-    {2,"Morse Keyboard",7},
-    {3,"Morse Mouse",2},
+    {1,"Mode 1",8},
+    {2,"Mode 2",2},
     {4,"Settings",4}
 };
 
@@ -172,18 +169,24 @@ const modeStruct modeProperty[] {
 //Setup NeoPixel LED
 Adafruit_NeoPixel ledPixels = Adafruit_NeoPixel(1, LED_PIN, NEO_GRB + NEO_KHZ800);
 
+
+//Defining the joystick REPORT_ID and profile type
+Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, 
+  JOYSTICK_TYPE_JOYSTICK, 8, 0,
+  true, true, false, 
+  false, false, false,
+  false, false, 
+  false, false, false);   
+
 void setup() {
 
   ledPixels.begin();                                                           //Start NeoPixel
   Serial.begin(115200);                                                        //Start Serial
-  Keyboard.begin();                                                            //Starts keyboard emulation
-  Mouse.begin();                                                               //Starts mouse emulation
+  switchSetup();
+  delay(5);
+  joystickSetup();
   delay(1000);
-  switchSetup();                                                               //Setup switch
-  delay(5);
   initLedFeedback();                                                          //Led will blink in a color to show the current mode 
-  delay(5);
-  morseSetup();                                                                //Setup morse
   delay(5);
   displayFeatureList();
   
@@ -210,6 +213,17 @@ void loop() {
   switch2State = digitalRead(SWITCH2_PIN);
   switch3State = digitalRead(SWITCH3_PIN);
   switch4State = digitalRead(SWITCH4_PIN);
+
+
+  //Update status of joystick inputs
+  if(JOYSTICK_ENABLED) {
+  xJoystick = analogRead(X_JOYSTICK_PIN);
+  yJoystick = analogRead(Y_JOYSTICK_PIN);    
+  } else {
+    xJoystick = 0;
+    yJoystick = 0;
+  }
+  
   timePressed = timeNotPressed  = 0;       //reset time counters
   if (!ctr) {                              //Set previous status of switch four 
     previousSw4State = HIGH;  
@@ -230,26 +244,25 @@ void loop() {
     timePressed = switch4TimeWatcher[0].elapsed();                //Calculate the time that switch one was pressed 
     switch4TimeWatcher[0].stop();                                 //Stop the single action (dot/dash) timer and reset
     switch4TimeWatcher[0].reset();
+    
     //Perform action if the switch has been hold active for specified time
     if (timePressed >= SWITCH_MODE_CHANGE_TIME){
       changeSwitchMode();                                                                
-    } else if(switchMode==1) {
-      keyboardAction(switch1State,switch2State,switch3State,LOW);
+    } else if(switchMode==1 || switchMode==2) {
+      joystickAction(switchMode,switch1State,switch2State,switch3State,LOW,xJoystick,yJoystick);
+      delay(5);
     }
   }
   //Serial.println(switch1State);
-  //Perform actions based on the mode
-  switch (switchMode) {
+  //Perform joystick actions based on the mode
+    switch (switchMode) {
       case 1:
-        keyboardAction(switch1State,switch2State,switch3State,HIGH);                        //Switch mode
+        joystickAction(switchMode,switch1State,switch2State,switch3State,HIGH,xJoystick,yJoystick);    //Switch mode
         break;
       case 2:
-        morseAction(1,switch1State,switch2State);                                           //Keyboard Morse mode
+        joystickAction(switchMode,switch1State,switch2State,switch3State,HIGH,xJoystick,yJoystick);    //Switch mode
         break;
       case 3:
-        morseAction(2,switch1State,switch2State);                                           //Mouse Morse mode
-        break;
-      case 4:
         settingsAction(switch1State,switch2State);                                          //Settings mode
         break;
   };
@@ -263,12 +276,12 @@ void displayFeatureList(void) {
 
   Serial.println(" ");
   Serial.println(" --- ");
-  Serial.println("This is the FAIO Multiplexer USB firmware");
+  Serial.println("This is the FAIO Multiplexer Joystick firmware");
   Serial.println(" ");
   Serial.println("VERSION: 1.0 (12 April 2020)");
   Serial.println(" ");
   Serial.println(" --- ");
-  Serial.println("Features: Adaptive switch, Morse Keyboard, Morse Mouse");
+  Serial.println("Features: Joystick ");
   Serial.println(" --- ");
   Serial.println(" ");
 
@@ -343,8 +356,6 @@ void switchFeedback(int switchNumber,int modeNumber,int delayTime, int blinkNumb
   uint32_t previousColor = getLedColor(modeNumber);
   uint8_t previousBrightness = getLedBrightness();
  
-  //updateLedColor(switchProperty[switchNumber-1].switchColorNumber,LED_ACTION_BRIGHTNESS);
-  //delay(MORSE_REACTION);
   setLedBlink(blinkNumber,delayTime,switchProperty[switchNumber-1].switchColorNumber,LED_ACTION_BRIGHTNESS);
   delay(5);
 
@@ -380,6 +391,74 @@ void modeFeedback(int modeNumber,int delayTime, int blinkNumber =1)
   //Set new led color and brightness 
   setLedColor(newColor,newBrightness);
   
+}
+
+
+//***SETUP SWITCH HID PROFILES FUNCTION (LOAD HID PROFILES)***//
+
+void joystickSetup(){
+      //Setup joystick library 
+      Joystick.begin(); 
+
+      //Set joystick x,y range
+      Joystick.setXAxisRange(-127, 127);
+      Joystick.setYAxisRange(-127, 127);
+
+}
+
+//***PERFORM JOYSTICK ACTIONS FUNCTION***//
+
+void joystickAction(int mode, int switch1,int switch2,int switch3,int switch4,int x,int y) {
+  
+    if(!switch1) {
+      switchFeedback(1,mode,switchReactionTime,1);
+      ( mode ==1 ) ? Joystick.pressButton(switchProperty[0].switchMode1ButtonNumber-1) : Joystick.pressButton(switchProperty[0].switchMode2ButtonNumber-1);
+      //Joystick.pressButton(switchProperty[0].switchMode1ButtonNumber);    
+    }  else {
+      ( mode ==1 ) ? Joystick.releaseButton(switchProperty[0].switchMode1ButtonNumber-1) : Joystick.releaseButton(switchProperty[0].switchMode2ButtonNumber-1);
+      //Joystick.releaseButton(switchProperty[0].switchMode1ButtonNumber);
+    }
+    
+    if(!switch2) {
+      switchFeedback(2,mode,switchReactionTime,1);
+      ( mode ==1 ) ? Joystick.pressButton(switchProperty[1].switchMode1ButtonNumber-1) : Joystick.pressButton(switchProperty[1].switchMode2ButtonNumber-1);
+    }  else {
+      ( mode ==1 ) ? Joystick.releaseButton(switchProperty[1].switchMode1ButtonNumber-1) : Joystick.releaseButton(switchProperty[1].switchMode2ButtonNumber-1);
+    }
+    
+    if(!switch3) {
+      switchFeedback(3,mode,switchReactionTime,1);
+      ( mode ==1 ) ? Joystick.pressButton(switchProperty[2].switchMode1ButtonNumber-1) : Joystick.pressButton(switchProperty[2].switchMode2ButtonNumber-1);
+    }  else {
+      ( mode ==1 ) ? Joystick.releaseButton(switchProperty[2].switchMode1ButtonNumber-1) : Joystick.releaseButton(switchProperty[2].switchMode2ButtonNumber-1);
+    }
+    
+    if(!switch4) {
+      switchFeedback(4,mode,switchReactionTime,1);
+      ( mode ==1 ) ? Joystick.pressButton(switchProperty[3].switchMode1ButtonNumber-1) : Joystick.pressButton(switchProperty[3].switchMode2ButtonNumber-1);
+    }  else {
+      ( mode ==1 ) ? Joystick.releaseButton(switchProperty[3].switchMode1ButtonNumber-1) : Joystick.releaseButton(switchProperty[3].switchMode2ButtonNumber-1);
+    }
+    
+    //x = map(x, 256, 768, -127, 127);
+    //y = map(y, 374, 650, -127, 127);
+
+  
+    if (x<=JOYSTICK_DEADZONE && x>=-JOYSTICK_DEADZONE) Joystick.setXAxis(0);  
+    else Joystick.setXAxis(x);  
+    
+    if (y<=JOYSTICK_DEADZONE && y>=-JOYSTICK_DEADZONE) Joystick.setYAxis(0);  
+    else Joystick.setYAxis(y);  
+
+    delay(10);
+
+}
+
+//***CLEAR JOYSTICK ACTION FUNCTION***//
+
+void joystickClear(){
+    Joystick.setXAxis(0);
+    Joystick.setYAxis(0);  
 }
 
 //***SETUP SWITCH MODE FUNCTION***//
@@ -432,237 +511,18 @@ void switchSetup() {
     Serial.print("Switch Reaction Level: ");
     Serial.println(switchReactionLevel);
     Serial.print("Reaction Time(ms): ");
-    Serial.print(switchReactionTime);
-    Serial.print("-");
-    Serial.println(morseReactionTime);   
+    Serial.println(switchReactionTime);
     //Calculate switch delay based on switchReactionLevel
     switchReactionTime = ((11-switchReactionLevel)*SWITCH_REACTION_TIME);
-    morseReactionTime = (pow(1.5,(11-switchReactionLevel))*MORSE_REACTION_TIME);
 }
 
-//***SETUP MORSE FUNCTION***//
 
-void morseSetup() {
-    morse.clear();
-    msMin = morseReactionTime;
-    msMax = msEnd = msClear = MORSE_TIMEOUT; 
-
-}
 
 void initLedFeedback(){
   setLedBlink(2,500,modeProperty[switchMode-1].modeColorNumber,LED_ACTION_BRIGHTNESS);
   delay(5);
   updateLedColor(modeProperty[switchMode-1].modeColorNumber,LED_BRIGHTNESS);
   delay(5);
-}
-
-//***ADAPTIVE SWITCH KEYBOARD FUNCTION***//
-
-void keyboardAction(int switch1,int switch2,int switch3,int switch4) {
-    if(!switch1) {
-      switchFeedback(1,switchMode,switchReactionTime,1);
-      //Serial.println("a");
-      Keyboard.press(switchProperty[0].switchChar);
-    } else if(!switch2) {
-      switchFeedback(2,switchMode,switchReactionTime,1);
-      //Serial.println("b");
-      Keyboard.press(switchProperty[1].switchChar);
-    } else if(!switch3) {
-      switchFeedback(3,switchMode,switchReactionTime,1);
-      //Serial.println("c");
-      Keyboard.press(switchProperty[2].switchChar);
-    } else if(!switch4) {
-      switchFeedback(4,switchMode,switchReactionTime,1);
-      //Serial.println("d");
-      Keyboard.press(switchProperty[3].switchChar);
-    }
-    else
-    {
-      Keyboard.releaseAll();
-    }
-    delay(5);
-
-}
-
-//***MORSE CODE TO MOUSE CONVERT FUNCTION***//
-
-void morseAction(int mode,int switch1,int switch2) {
-  int i, j;
-  static int ctr;
-  unsigned long timePressed;
-  unsigned long timeNotPressed;
-  static int previousSwitch1;
-  static int previousSwitch2;
-
-  int isShown;                                                                                  //is character shown yet?
-  int backspaceDone = 0;                                                                        //is backspace entered? 0 = no, 1=yes
-
-  timePressed = timeNotPressed  = 0; 
-
-  if (!ctr) {
-    previousSwitch1 = LOW;  
-    previousSwitch2 = LOW;  
-    ctr++;
-  }
-   //Check if dot or dash switch is pressed
-   if ((switch1 == LOW && previousSwitch1 == HIGH) || (switch2 == LOW && previousSwitch2 == HIGH)) {
-      //Dot
-     if (switch1 == LOW) { 
-         switchFeedback(1,mode,morseReactionTime,1);                                            //Blink blue once
-         previousSwitch1 = LOW;
-     } //Dash
-     if (switch2 == LOW) {
-         switchFeedback(2,mode,morseReactionTime,1);                                            //Blink red once
-         previousSwitch2 = LOW;
-     }
-     isShown = 0;                                                                               //A key is pressed but not Shown yet
-     for (i=0; i<3; i++) timeWatcher[i].stop();                                                          //Stop end of char
-     
-     timeWatcher[0].reset();                                                                             //Reset and start the the timer
-     timeWatcher[0].start();                                                                             
-   }
-
- 
- // Switch 1 or Dot was released
- if (switch1 == HIGH && previousSwitch1 == LOW) {
-   previousSwitch1 = HIGH;
-   
-   backspaceDone = 0;                                                                           //Backspace is not entered 
-   timePressed = timeWatcher[0].elapsed();                                                               //Calculate the time that key was pressed 
-   for (i=0; i<3; i++) timeWatcher[i].stop();                                                            //Stop end of character and reset
-   for (i=0; i<3; i++) timeWatcher[i].reset();                                                           
-   timeWatcher[1].start();
-
-  //Push dot to morse stack if it's pressed for specified time
-    if (timePressed >= msMin && timePressed < msMax) {
-      morse.push(1);
-      isShown = 0; 
-    }
- }
-
-   //Switch 2 or Dash was released
-   if (switch2 == HIGH && previousSwitch2 == LOW) {
-
-    previousSwitch2 = HIGH;
-    backspaceDone = 0;                                                                          //Backspace is not entered 
-    timePressed = timeWatcher[0].elapsed();                                                              //Calculate the time that key was pressed 
-    for (i=0; i<3; i++) timeWatcher[i].stop();                                                           //Stop end of character and reset
-    for (i=0; i<3; i++) timeWatcher[i].reset();
-    timeWatcher[1].start();
-   
-    //Push dash to morse stack if it's pressed for specified time
-    if (timePressed >= msMin && timePressed < msMax) {
-      morse.push(2);
-      isShown = 0;       
-    }
-   }
-
- // Processing the backspace key if button 1 or button 2 are hold and pressed for defined time
-  if (timePressed >= msMax && timePressed >= msClear && backspaceDone == 0 &&  mode== 1) {
-    previousSwitch1 = HIGH;
-    previousSwitch2 = HIGH;
-    if(mode==1) Keyboard.write(8);                                                               //Press Backspace key
-    backspaceDone = 1;                                                                          //Set Backspace done already
-    isShown = 1;
-    for (i=1; i<3; i++) { timeWatcher[i].stop(); timeWatcher[i].reset(); }                      //Stop and reset end of character
- }
-
-   //End the character if nothing pressed for defined time and nothing is shown already 
-   timeNotPressed = timeWatcher[1].elapsed();
-    if (timeNotPressed >= msMax && timeNotPressed >= msEnd && isShown == 0 && backspaceDone == 0) {
-      //Serial.println(morse.getCharNum()); 
-      if(mode==1) {
-       Keyboard.write(morse.getCharAscii());                                                  //Enter keyboard key based on ascii code if it's in morse keyboard mode
-      } else if (mode==2) {  
-        int* mouseAct;
-        mouseAct=morse.getMouse();
-        mouseAction((int)mouseAct[0],(int)mouseAct[1],(int)mouseAct[2]);                        //Perform mouse action if it's in morse mouse mode
-      }
-      
-      //Clean up morse code and get ready for next character
-      morse.clear();
-      isShown = 1;                                                                                //Set variable to is shown                                                                                      
-      timeWatcher[1].stop();                                                                               //Stop and reset the timer to form a character
-      timeWatcher[1].reset();
-  }
-  
-}
-
-
-//***PERFORM MOUSE ACTIONS FUNCTION***//
-
-void mouseAction(int button,int xValue,int yValue) {
-    switch (button) {
-      case 0:
-        break;
-      case 1:
-        if (!Mouse.isPressed(MOUSE_LEFT)) {
-          Mouse.press(MOUSE_LEFT);
-          delay(50);
-          Mouse.release(MOUSE_LEFT);
-        } 
-        else if (Mouse.isPressed(MOUSE_LEFT)) {
-          Mouse.release(MOUSE_LEFT);
-        }    
-        break;
-      case 2:
-        if (!Mouse.isPressed(MOUSE_RIGHT)) {
-          Mouse.press(MOUSE_RIGHT);
-          delay(50);
-          Mouse.release(MOUSE_RIGHT);
-        }
-        else if (Mouse.isPressed(MOUSE_RIGHT)) {
-          Mouse.release(MOUSE_RIGHT);
-        }   
-        break;
-      case 3:
-        if (!Mouse.isPressed(MOUSE_LEFT)) {
-          Mouse.press(MOUSE_LEFT);
-          delay(50);
-          Mouse.release(MOUSE_LEFT);
-          delay(50);
-          Mouse.press(MOUSE_LEFT);
-          delay(50);
-          Mouse.release(MOUSE_LEFT);                    
-        }
-        else if (Mouse.isPressed(MOUSE_LEFT)) {
-          Mouse.release(MOUSE_LEFT);
-        }   
-        break;        
-      case 4:
-        if (!Mouse.isPressed(MOUSE_RIGHT)) {
-          Mouse.press(MOUSE_RIGHT);
-          delay(50);
-          Mouse.release(MOUSE_RIGHT);
-          delay(50);
-          Mouse.press(MOUSE_RIGHT);
-          delay(50);
-          Mouse.release(MOUSE_RIGHT);                    
-        }
-        else if (Mouse.isPressed(MOUSE_RIGHT)) {
-          Mouse.release(MOUSE_RIGHT);
-        }   
-        break;
-      case 5:             
-        if (!Mouse.isPressed(MOUSE_LEFT)) {
-          Mouse.press(MOUSE_LEFT);
-        } 
-        else if (Mouse.isPressed(MOUSE_LEFT)) {
-          Mouse.release(MOUSE_LEFT);
-        }    
-        break;
-      case 6:
-        if (!Mouse.isPressed(MOUSE_RIGHT)) {
-          Mouse.press(MOUSE_RIGHT);
-        } 
-        else if (Mouse.isPressed(MOUSE_RIGHT)) {
-          Mouse.release(MOUSE_RIGHT);
-        }    
-        break;                           
-  };
-
-  Mouse.move(xValue*MOUSE_MOVE_MULTI, yValue*MOUSE_MOVE_MULTI, 0);
-
 }
 
 
@@ -676,11 +536,8 @@ void changeSwitchMode(){
     } 
     else {
     }
-
-    morseSetup();
     
     //Blink 2 times in modes color 
-    //setLedBlink(2,500,modeProperty[switchMode].modeColorNumber,LED_ACTION_BRIGHTNESS);
     modeFeedback(switchMode,500,2);
 
     //Serial print switch mode
@@ -713,22 +570,17 @@ void settingsAction(int switch1,int switch2) {
 void increaseReactionLevel(void) {
   switchReactionLevel++;
   if (switchReactionLevel == 11) {
-    //setLedBlink(6,100,3,LED_ACTION_BRIGHTNESS);
     settingsFeedback(3,switchMode,100,6);
     switchReactionLevel = 10;
   } else {
-    //setLedBlink(switchReactionLevel,100,4,LED_ACTION_BRIGHTNESS);
     settingsFeedback(1,switchMode,100,6);
     switchReactionTime = ((11-switchReactionLevel)*SWITCH_REACTION_TIME);
-    morseReactionTime = (pow(1.5,(11-switchReactionLevel))*MORSE_REACTION_TIME);
     delay(25);
   }
   Serial.print("Reaction level: ");
   Serial.println(switchReactionLevel);
   Serial.print("Reaction Time(ms): ");
-  Serial.print(switchReactionTime);
-  Serial.print("-");
-  Serial.println(morseReactionTime);
+  Serial.println(switchReactionTime);
   #if defined(ARDUINO_SAMD_FEATHER_M0)
     switchReactionLevelFlash.write(switchReactionLevel);
   #elif defined(__AVR_Atmega32U4__)
@@ -743,22 +595,18 @@ void increaseReactionLevel(void) {
 void decreaseReactionLevel(void) {
   switchReactionLevel--;
   if (switchReactionLevel == 0) {
-    //setLedBlink(6,100,3,LED_ACTION_BRIGHTNESS);
+
     settingsFeedback(4,switchMode,100,6);
     switchReactionLevel = 1; 
   } else {
-    //setLedBlink(switchReactionLevel,100,5,LED_ACTION_BRIGHTNESS);
     settingsFeedback(2,switchMode,100,6);
     switchReactionTime = ((11-switchReactionLevel)*SWITCH_REACTION_TIME);
-    morseReactionTime = (pow(1.5,(11-switchReactionLevel))*MORSE_REACTION_TIME);
     delay(25);
   } 
   Serial.print("Reaction level: ");
   Serial.println(switchReactionLevel);
   Serial.print("Reaction Time(ms): ");
-  Serial.print(switchReactionTime);
-  Serial.print("-");
-  Serial.println(morseReactionTime);  
+  Serial.println(switchReactionTime);
   #if defined(ARDUINO_SAMD_FEATHER_M0)
     switchReactionLevelFlash.write(switchReactionLevel);
   #elif defined(__AVR_Atmega32U4__)
