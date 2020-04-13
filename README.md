@@ -2,12 +2,22 @@
 
 FAIO Multiplexer is an open-source Assistive technology wing for Adafruit Feather boards which enables those with limited or no hand movement to use Adaptive switches as input to operate in multiple input modes.
 
-FAIO Multiplexer supports following switch modes:
+FAIO Multiplexer USB supports following switch modes:
 
-* Switch Access Mode ( HID Keyboard )
-* Morse Keyboard Mode ( HID Keyboard )
-* Morse Mouse Mode ( HID Mouse )
-* Joystick Mode ( HID Joystick )
+* Switch Access Mode ( HID Keyboard ) : Teal Led
+* Morse Keyboard Mode ( HID Keyboard ) : Purple Led
+* Morse Mouse Mode ( HID Mouse ) : Pink Led
+* Settings Mode : Orange Led
+
+FAIO Multiplexer Joystick supports following switch modes:
+
+* Mode 1 (Button 1,Button 2,Button 3,Button 4) : Teal Led
+* Mode 2 (Button 5,Button 6,Button 7,Button 8) : Pink Led
+* Settings Mode : Orange Led
+
+How to change the mode?
+
+You can change the mode by holding switch number 4 or D for 2 seconds.
 
 Additional firmware to operate Xbox Adaptive Controller using switch module is available as well.
 
@@ -47,10 +57,10 @@ These are all the files and documentation associated with the FAIO Multiplexer p
     <td><a href="https://github.com/milador/FAIO-2/raw/master/Software/FAIO_Multiplexer_USB_Software/FAIO_Multiplexer_USB_Software.ino">FAIO_Multiplexer_USB_Software.ino</a></td>
   </tr>
   <tr>
-    <td>FAIO_Multiplexer XAC Switch Software</td>
+    <td>FAIO_Multiplexer Joystick Switch Software</td>
     <td>1.0</td>
     <td>Ino</td>
-    <td><a href="https://github.com/milador/FAIO-2/raw/master/Software/FAIO_Multiplexer_XAC_Software/FAIO_Multiplexer_XAC_Software.ino">FAIO_Multiplexer_XAC_Software.ino</a></td>
+    <td><a href="https://github.com/milador/FAIO-2/raw/master/Software/FAIO_Multiplexer_Joystick_Software/FAIO_Multiplexer_Joystick_Software.ino">FAIO_Multiplexer_Joystick_Software.ino</a></td>
   </tr>
   <tr>
     <td>FAIO_Multiplexer Switch Board Layout</td>
@@ -103,27 +113,22 @@ The FAIO Multiplexer switch interface can operate in 4 modes and switch D is use
     <tr>
     <td>1</td>
     <td>Keyboard Switch</td>
-    <td>Green</td>
+    <td>Teal</td>
   </tr>
   <tr>
     <td>2</td>
     <td>Morse Keyboard</td>
-    <td>Pink</td>
+    <td>Purple</td>
   </tr>
   <tr>
     <td>3</td>
     <td>Morse Mouse</td>
-    <td>Yellow</td>
+    <td>Pink</td>
   </tr>
   <tr>
     <td>4</td>
-    <td>Joystick</td>
+    <td>Settings</td>
     <td>Orange</td>
-  </tr>
-  <tr>
-    <td>5</td>
-    <td>Configuration</td>
-    <td>Purple</td>
   </tr>
 </table> 
 
@@ -131,33 +136,33 @@ The FAIO Multiplexer switch interface can operate in 4 modes and switch D is use
 <img align="center" src="https://raw.githubusercontent.com/milador/FAIO_Multiplexer/master/Resources/Images/faio_multiplexer.png" width="50%" height="50%" alt="FAIO Multiplexer board"/>
 </p>
 
-## XAC Switch mode
+## Joystick Switch mode
 
  <table style="width:100%">
   <tr>
-    <th>Button Number</th>
+    <th>Joystick Button Number (Mode 1,Mode 2)</th>
     <th>Xbox Button</th>
     <th>Color</th>
   </tr>
     <tr>
-    <td>1</td>
-    <td>A</td>
-    <td>Green</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>B</td>
-    <td>Red</td>
-  </tr>
-  <tr>
-    <td>3</td>
+    <td>(1,5)</td>
     <td>X1</td>
     <td>Blue</td>
   </tr>
   <tr>
-    <td>4</td>
+    <td>(2,6)</td>
     <td>X2</td>
     <td>Yellow</td>
+  </tr>
+  <tr>
+    <td>(3,7)</td>
+    <td>A</td>
+    <td>Green</td>
+  </tr>
+  <tr>
+    <td>(4,8)</td>
+    <td>B</td>
+    <td>Red</td>
   </tr>
 </table> 
 
@@ -179,7 +184,7 @@ The FAIO Multiplexer switch interface can operate in 4 modes and switch D is use
   
   2.1. USB Firmware : https://github.com/milador/FAIO_Multiplexer/raw/master/Software/FAIO_Multiplexer_USB_Software/FAIO_Multiplexer_USB_Software.ino
 
-  2.2. XAC Firmware : https://github.com/milador/FAIO_Multiplexer/raw/master/Software/FAIO_Multiplexer_XAC_Software/FAIO_Multiplexer_XAC_Software.ino
+  2.2. Joystick Firmware : https://github.com/milador/FAIO_Multiplexer/raw/master/Software/FAIO_Multiplexer_Joystick_Software/FAIO_Multiplexer_Joystick_Software.ino
   
   2.3. Bluetooth Firmware (Coming up)
   
