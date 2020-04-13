@@ -154,10 +154,10 @@ const switchStruct switchProperty[] {
 
 //Settings Action properties 
 const settingsActionStruct settingsProperty[] {
-    {1,"Increase Speed",5},                             //{1=Increase Speed,5=blue}
-    {2,"Decrease Speed",6},                             //{2=Decrease Speed,6=red}
-    {3,"Max Speed",1},                                  //{3=Max Speed,1=green}
-    {4,"Min Speed",1}                                   //{4=Min Speed,1=green}
+    {1,"Increase Reaction",5},                             //{1=Increase Reaction,5=blue}
+    {2,"Decrease Reaction",6},                             //{2=Decrease Reaction,6=red}
+    {3,"Max Reaction",1},                                  //{3=Max Reaction,1=green}
+    {4,"Min Reaction",1}                                   //{4=Min Reaction,1=green}
 };
 
 //Mode properties 
