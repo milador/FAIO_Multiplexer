@@ -19,7 +19,7 @@
 //FAIO_Multiplexer USB Switch Software
 //FAIO_Multiplexer_USB_Software
 //Written by: Milad Hajihassan
-//Version 1.0 (12/4/20120)
+//Version 1.0 (12/4/2020)
 //Github Link: https://github.com/milador/FAIO_Multiplexer
 
 #include "Mouse.h"
