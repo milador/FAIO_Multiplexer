@@ -1,15 +1,13 @@
-Index,Quantity,Digikey Part Number,Manufacturer Part Number,Description,Unit Price (US),Total Price (US),Link
-1,1,1528-1531-ND,2772,ADAFRUIT FEATHER M0 BASIC PROTO,19.95,,https://www.digikey.com/product-detail/en/adafruit-industries-llc/2772/1528-1531-ND 
-2,1,1568-1213-ND,COM-12986,ADDRESS LED DISC SER RGB 5MM 5PC,2.95,,https://www.digikey.com/products/en?keywords=COM-12986
-3,1,1528-1560-ND,2886,FEATHER HEADER KIT FML,0.95,,https://www.digikey.com/product-detail/en/adafruit-industries-llc/2886/1528-1560-ND/ 
-4,1,CF14JT470RCT-ND,CF14JT470R,RES 470 OHM 1/4W 5% AXIAL ,0.1,,https://www.digikey.com/product-detail/en/stackpole-electronics-inc/CF14JT470R/CF14JT470RCT-ND/1830342
-5,4,CP1-3535NG-ND,"	SJ1-3535NG",CONN JACK STEREO 3.5MM R/A,1.25,,https://www.digikey.com/product-detail/en/cui-inc/SJ1-3535NG/CP1-3535NG-ND 
-,,,,,Subtotal,28.95,
-,,Alternative ,,,,,
-Index,Quantity,Digikey Part Number,Manufacturer Part Number,Description,Unit Price (US),Total Price (US),Link
+﻿Index,Quantity,Digikey Part Number,Manufacturer Part Number,Description,Unit Price (US),Total Price (US),Link
 1,1,1528-1514-ND,2771,FEATHER 32U4 BASIC PROTO,19.95,,https://www.digikey.com/product-detail/en/adafruit-industries-llc/2771/1528-1514-ND/
 2,1,1568-1213-ND,COM-12986,ADDRESS LED DISC SER RGB 5MM 5PC,2.95,,https://www.digikey.com/products/en?keywords=COM-12986
 3,1,1528-1560-ND,2886,FEATHER HEADER KIT FML,0.95,,https://www.digikey.com/product-detail/en/adafruit-industries-llc/2886/1528-1560-ND/ 
 4,1,CF14JT470RCT-ND,CF14JT470R,RES 470 OHM 1/4W 5% AXIAL ,0.1,,https://www.digikey.com/product-detail/en/stackpole-electronics-inc/CF14JT470R/CF14JT470RCT-ND/1830342
 5,4,CP1-3535NG-ND,"	SJ1-3535NG",CONN JACK STEREO 3.5MM R/A,1.25,,https://www.digikey.com/product-detail/en/cui-inc/SJ1-3535NG/CP1-3535NG-ND 
-,,,,,Subtotal,28.95,
+6,1,1528-2124-ND,512,ANALOG 2-AXIS THUMB JOYSTICK WIT,5.95,,https://www.digikey.com/product-detail/en/adafruit-industries-llc/512/1528-2124-ND/
+7,1,S7038-ND,PPPC051LFBN-RC,CONN HDR 5POS 0.1 GOLD PCB,0.49,,https://www.digikey.com/product-detail/en/sullins-connector-solutions/PPPC051LFBN-RC/S7038-ND
+8,1,732-5318-ND,61300511121,CONN HEADER VERT 5POS 2.54MM,0.25,,https://www.digikey.com/product-detail/en/wurth-electronics-inc/61300511121/732-5318-ND
+9,4,36-4701-ND,4701,"	
+HEX NUT 0.245"" STEEL 6-32",0.1,,https://www.digikey.com/en/products/detail/keystone-electronics/4701/316272
+10,4,36-9309-ND,9309,MACH SCREW PAN HEAD SLOTTED 6-32,0.1,,https://www.digikey.com/en/products/detail/keystone-electronics/9309/2746088
+,,,,,Subtotal,36.44,
