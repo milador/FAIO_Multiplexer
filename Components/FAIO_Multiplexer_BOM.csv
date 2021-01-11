@@ -4,10 +4,9 @@
 3,1,1528-1560-ND,2886,FEATHER HEADER KIT FML,0.95,,https://www.digikey.com/product-detail/en/adafruit-industries-llc/2886/1528-1560-ND/ 
 4,1,CF14JT470RCT-ND,CF14JT470R,RES 470 OHM 1/4W 5% AXIAL ,0.1,,https://www.digikey.com/product-detail/en/stackpole-electronics-inc/CF14JT470R/CF14JT470RCT-ND/1830342
 5,4,CP1-3535NG-ND,"	SJ1-3535NG",CONN JACK STEREO 3.5MM R/A,1.25,,https://www.digikey.com/product-detail/en/cui-inc/SJ1-3535NG/CP1-3535NG-ND 
-6,1,1528-2124-ND,512,ANALOG 2-AXIS THUMB JOYSTICK WIT,5.95,,https://www.digikey.com/product-detail/en/adafruit-industries-llc/512/1528-2124-ND/
-7,1,S7038-ND,PPPC051LFBN-RC,CONN HDR 5POS 0.1 GOLD PCB,0.49,,https://www.digikey.com/product-detail/en/sullins-connector-solutions/PPPC051LFBN-RC/S7038-ND
+6,4,36-4687-ND,4687,"HEX NUT 0.197"" NYLON M2.5",0.15,,https://www.digikey.com/en/products/detail/keystone-electronics/4687/4499296
+7,4,36-29334-ND,29334,MACH SCREW PAN SLOTTED M2.5X0.45,0.22,,https://www.digikey.com/en/products/detail/keystone-electronics/29334/1532988
 8,1,732-5318-ND,61300511121,CONN HEADER VERT 5POS 2.54MM,0.25,,https://www.digikey.com/product-detail/en/wurth-electronics-inc/61300511121/732-5318-ND
-9,4,36-4701-ND,4701,"	
-HEX NUT 0.245"" STEEL 6-32",0.1,,https://www.digikey.com/en/products/detail/keystone-electronics/4701/316272
-10,4,36-9309-ND,9309,MACH SCREW PAN HEAD SLOTTED 6-32,0.1,,https://www.digikey.com/en/products/detail/keystone-electronics/9309/2746088
-,,,,,Subtotal,36.44,
+9,1,1528-1858-ND,2750,BATTERY LITHIUM 3.7V 350MAH (Optional),6.95,,https://www.digikey.com/en/products/detail/adafruit-industries-llc/2750/6612470
+,,,,,,,
+,,,,,Subtotal,30.68,
