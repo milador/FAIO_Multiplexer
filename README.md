@@ -2,6 +2,12 @@
 
 FAIO Multiplexer is an open-source Assistive technology wing for Adafruit Feather boards which enables those with limited or no hand movement to use Adaptive switches as input to operate in multiple input modes.
 
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/milador/FAIO_Multiplexer/master/Resources/Images/faio_multiplexer_1.png" width="50%" height="50%" alt="FAIO Multiplexer 1"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/FAIO_Multiplexer/master/Resources/Images/faio_multiplexer_2.png" width="50%" height="50%" alt="FAIO Multiplexer 2"/>
+<img align="center" src="https://raw.githubusercontent.com/milador/FAIO_Multiplexer/master/Resources/Images/faio_multiplexer_3.png" width="50%" height="50%" alt="FAIO Multiplexer 3"/>
+</p>
+
 FAIO Multiplexer USB supports following switch modes:
 
 * Switch Access Mode ( HID Keyboard ) : Teal Led
