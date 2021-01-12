@@ -12,7 +12,7 @@ FILE_NAME(
 /* name */ 
 'C:/Users/Milad/Development/Personal/FAIO_Multiplexer/Hardware/Housing
 _design/STEP/FAIO_Multiplexer_Body_Top.step',
-/* time_stamp */ '2021-01-10T22:35:57-08:00',
+/* time_stamp */ '2021-01-11T19:29:42-08:00',
 /* author */ (''),
 /* organization */ (''),
 /* preprocessor_version */ 'ST-DEVELOPER v18.1',
@@ -8858,7 +8858,7 @@ POSITIVE_RATIO_MEASURE(7850.),#4680);
 #8317=CARTESIAN_POINT('Origin',(-5.,0.,-27.86));
 #8318=CARTESIAN_POINT('Origin',(25.4,41.,-11.43));
 #8319=CARTESIAN_POINT('Origin',(-5.,0.,5.));
-#8320=CARTESIAN_POINT('',(5.,27.741732872309,41.0265819079692));
+#8320=CARTESIAN_POINT('',(5.,27.741732872309,41.));
 #8321=UNCERTAINTY_MEASURE_WITH_UNIT(LENGTH_MEASURE(0.01),#8327,
 'DISTANCE_ACCURACY_VALUE',
 'Maximum model space distance between geometric entities at asserted c
@@ -8918,12 +8918,12 @@ SOLID_ANGLE_UNIT()
 #8337=SHAPE_REPRESENTATION('',(#4690),#8325);
 #8338=PRODUCT_DEFINITION_CONTEXT('part definition',#8346,'design');
 #8339=PRODUCT_DEFINITION('FAIO_Multiplexer_Body_Top',
-'FAIO_Multiplexer_Body_Top v2',#8341,#8338);
+'FAIO_Multiplexer_Body_Top v3',#8341,#8338);
 #8340=PRODUCT_DEFINITION('Case','Case',#8342,#8338);
 #8341=PRODUCT_DEFINITION_FORMATION('',$,#8348);
 #8342=PRODUCT_DEFINITION_FORMATION('',$,#8349);
-#8343=PRODUCT_RELATED_PRODUCT_CATEGORY('FAIO_Multiplexer_Body_Top v2',
-'FAIO_Multiplexer_Body_Top v2',(#8348));
+#8343=PRODUCT_RELATED_PRODUCT_CATEGORY('FAIO_Multiplexer_Body_Top v3',
+'FAIO_Multiplexer_Body_Top v3',(#8348));
 #8344=PRODUCT_RELATED_PRODUCT_CATEGORY('Case','Case',(#8349));
 #8345=APPLICATION_PROTOCOL_DEFINITION('international standard',
 'automotive_design',2009,#8346);
@@ -8931,7 +8931,7 @@ SOLID_ANGLE_UNIT()
 'Core Data for Automotive Mechanical Design Process');
 #8347=PRODUCT_CONTEXT('part definition',#8346,'mechanical');
 #8348=PRODUCT('FAIO_Multiplexer_Body_Top',
-'FAIO_Multiplexer_Body_Top v2',$,(#8347));
+'FAIO_Multiplexer_Body_Top v3',$,(#8347));
 #8349=PRODUCT('Case','Case',$,(#8347));
 #8350=PRESENTATION_STYLE_ASSIGNMENT((#8352));
 #8351=PRESENTATION_STYLE_ASSIGNMENT((#8353));

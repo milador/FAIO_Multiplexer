@@ -12,7 +12,7 @@ FILE_NAME(
 /* name */ 
 'C:/Users/Milad/Development/Personal/FAIO_Multiplexer/Hardware/Housing
 _design/STEP/FAIO_Multiplexer_Body_Battery_Holder.step',
-/* time_stamp */ '2021-01-10T22:34:32-08:00',
+/* time_stamp */ '2021-01-11T19:28:46-08:00',
 /* author */ (''),
 /* organization */ (''),
 /* preprocessor_version */ 'ST-DEVELOPER v18.1',
@@ -7169,7 +7169,7 @@ POSITIVE_RATIO_MEASURE(7850.),#5299);
 #6557=DIRECTION('ref_axis',(-0.181818181818181,0.,-0.983332166035634));
 #6558=DIRECTION('center_axis',(0.,1.,0.));
 #6559=DIRECTION('ref_axis',(-1.,0.,0.));
-#6560=DIRECTION('',(1.73472347597681E-18,1.,1.2490009027033E-16));
+#6560=DIRECTION('',(1.73472347597662E-18,1.,1.2490009027033E-16));
 #6561=DIRECTION('',(1.,1.73472347597681E-18,4.80437087682639E-17));
 #6562=CARTESIAN_POINT('',(0.,0.,0.));
 #6563=CARTESIAN_POINT('',(0.,0.,0.));
@@ -10258,7 +10258,7 @@ POSITIVE_RATIO_MEASURE(7850.),#5299);
 #9646=CARTESIAN_POINT('Origin',(2.54,2.,-20.32));
 #9647=CARTESIAN_POINT('Origin',(48.26,2.,-2.54));
 #9648=CARTESIAN_POINT('Origin',(25.4,11.,-11.4300005428959));
-#9649=CARTESIAN_POINT('',(-3.54,25.1353415615735,11.));
+#9649=CARTESIAN_POINT('',(-3.54,24.6600010249112,11.));
 #9650=UNCERTAINTY_MEASURE_WITH_UNIT(LENGTH_MEASURE(0.01),#9656,
 'DISTANCE_ACCURACY_VALUE',
 'Maximum model space distance between geometric entities at asserted c
@@ -10318,13 +10318,13 @@ SOLID_ANGLE_UNIT()
 #9666=SHAPE_REPRESENTATION('',(#5309),#9654);
 #9667=PRODUCT_DEFINITION_CONTEXT('part definition',#9675,'design');
 #9668=PRODUCT_DEFINITION('FAIO_Multiplexer_Body_Battery_Holder',
-'FAIO_Multiplexer_Body_Battery_Holder v2',#9670,#9667);
+'FAIO_Multiplexer_Body_Battery_Holder v3',#9670,#9667);
 #9669=PRODUCT_DEFINITION('Case','Case',#9671,#9667);
 #9670=PRODUCT_DEFINITION_FORMATION('',$,#9677);
 #9671=PRODUCT_DEFINITION_FORMATION('',$,#9678);
 #9672=PRODUCT_RELATED_PRODUCT_CATEGORY(
-'FAIO_Multiplexer_Body_Battery_Holder v2',
-'FAIO_Multiplexer_Body_Battery_Holder v2',(#9677));
+'FAIO_Multiplexer_Body_Battery_Holder v3',
+'FAIO_Multiplexer_Body_Battery_Holder v3',(#9677));
 #9673=PRODUCT_RELATED_PRODUCT_CATEGORY('Case','Case',(#9678));
 #9674=APPLICATION_PROTOCOL_DEFINITION('international standard',
 'automotive_design',2009,#9675);
@@ -10332,7 +10332,7 @@ SOLID_ANGLE_UNIT()
 'Core Data for Automotive Mechanical Design Process');
 #9676=PRODUCT_CONTEXT('part definition',#9675,'mechanical');
 #9677=PRODUCT('FAIO_Multiplexer_Body_Battery_Holder',
-'FAIO_Multiplexer_Body_Battery_Holder v2',$,(#9676));
+'FAIO_Multiplexer_Body_Battery_Holder v3',$,(#9676));
 #9678=PRODUCT('Case','Case',$,(#9676));
 #9679=PRESENTATION_STYLE_ASSIGNMENT((#9681));
 #9680=PRESENTATION_STYLE_ASSIGNMENT((#9682));
