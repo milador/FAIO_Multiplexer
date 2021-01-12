@@ -34,7 +34,7 @@ These are all the files and documentation associated with the FAIO Multiplexer p
   </tr>
     <tr>
     <td>FAIO Multiplexer All</td>
-    <td>1.0</td>
+    <td>1.1</td>
     <td>ZIP</td>
     <td><a href="https://github.com/milador/FAIO_Multiplexer/archive/master.zip">FAIO_Multiplexer-master.zip</a></td>
   </tr>
@@ -58,7 +58,7 @@ These are all the files and documentation associated with the FAIO Multiplexer p
   </tr>
   <tr>
     <td>FAIO_Multiplexer Switch BOM (csv)</td>
-    <td>February 18, 2019</td>
+    <td>Jan 11, 2021</td>
     <td>CSV</td>
     <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Components/FAIO_Multiplexer_BOM.csv">FAIO_Multiplexer_BOM.csv</a></td>
   </tr>
@@ -88,21 +88,27 @@ These are all the files and documentation associated with the FAIO Multiplexer p
   </tr>
    <tr>
     <td>FAIO_Multiplexer Battery Holder enclosure</td>
-    <td>1.0</td>
+    <td>1.1</td>
     <td>STL</td>
-    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/FAIO_Multiplexer_Body_Battery_Holder.stl">FAIO_Multiplexer_Body_Battery_Holder.stl</a></td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/STL/FAIO_Multiplexer_Body_Battery_Holder.stl">FAIO_Multiplexer_Body_Battery_Holder.stl</a></td>
   </tr>
   <tr>
     <td>FAIO_Multiplexer Bottom enclosure</td>
-    <td>1.0</td>
+    <td>1.1</td>
     <td>STL</td>
-    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/FAIO_Multiplexer_Body_Bottom.stl">FAIO_Multiplexer_Body_Bottom.stl</a></td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/STL/FAIO_Multiplexer_Body_Bottom.stl">FAIO_Multiplexer_Body_Bottom.stl</a></td>
+  </tr>
+  <tr>
+    <td>FAIO_Multiplexer Bottom enclosure with camera mount threaded screw hole</td>
+    <td>1.1</td>
+    <td>STL</td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/STL/FAIO_Multiplexer_Body_Bottom_Mount.stl">FAIO_Multiplexer_Body_Bottom_Mount.stl</a></td>
   </tr>
   <tr>
     <td>FAIO_Multiplexer Top enclosure</td>
-    <td>1.0</td>
+    <td>1.1</td>
     <td>STL</td>
-    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/FAIO_Multiplexer_Body_Top.stl">FAIO_Multiplexer_Body_Top.stl</a></td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/STL/FAIO_Multiplexer_Body_Top.stl">FAIO_Multiplexer_Body_Top.stl</a></td>
   </tr>
 </table> 
 
