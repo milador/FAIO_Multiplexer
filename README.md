@@ -108,7 +108,7 @@ These are all the files and documentation associated with the FAIO Multiplexer p
     <td>FAIO_Multiplexer Bottom enclosure with camera mount threaded screw hole</td>
     <td>1.1</td>
     <td>STL</td>
-    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/STL/FAIO_Multiplexer_Body_Bottom_Mount.stl">FAIO_Multiplexer_Body_Bottom_Mount.stl</a></td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Hardware/Housing_design/STL/FAIO_Multiplexer_Body_Bottom_With_Mount.stl">FAIO_Multiplexer_Body_Bottom_With_Mount.stl</a></td>
   </tr>
   <tr>
     <td>FAIO_Multiplexer Top enclosure</td>
