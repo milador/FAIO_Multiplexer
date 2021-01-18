@@ -45,22 +45,22 @@ These are all the files and documentation associated with the FAIO Multiplexer p
     <td><a href="https://github.com/milador/FAIO_Multiplexer/archive/master.zip">FAIO_Multiplexer-master.zip</a></td>
   </tr>
   <tr>
-    <td>FAIO_Multiplexer Manual</td>
-    <td>Version 1.0</td>
+    <td>FAIO_Multiplexer Assembly Manual</td>
+    <td>Version 1.1</td>
     <td>PDF</td>
-    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/FAIO_Multiplexer_Instructions_Manual.pdf">FAIO_Multiplexer_Instructions_Manual.pdf</a></td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Documentation/Build_Manuals/FAIO_Multiplexer_Instructions_Manual.pdf">FAIO_Multiplexer_Instructions_Manual.pdf</a></td>
   </tr>
    <tr>
     <td>FAIO_Multiplexer USB User Manual</td>
-    <td>Version 1.0</td>
+    <td>Version 1.1</td>
     <td>PDF</td>
-    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/FAIO_Multiplexer_USB_User_Manual.pdf">FAIO_Multiplexer_USB_User_Manual.pdf</a></td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Documentation/User_Manuals/FAIO_Multiplexer_USB_User_Manual.pdf">FAIO_Multiplexer_USB_User_Manual.pdf</a></td>
   </tr>
     <tr>
     <td>FAIO_Multiplexer Joystick User Manual</td>
-    <td>Version 1.0</td>
+    <td>Version 1.1</td>
     <td>PDF</td>
-    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/FAIO_Multiplexer_Joystick_User_Manual.pdf">FAIO_Multiplexer_Joystick_User_Manual.pdf</a></td>
+    <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Documentation/User_Manuals/FAIO_Multiplexer_Joystick_User_Manual.pdf">FAIO_Multiplexer_Joystick_User_Manual.pdf</a></td>
   </tr>
   <tr>
     <td>FAIO_Multiplexer Switch BOM (csv)</td>
