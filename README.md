@@ -46,7 +46,7 @@ These are all the files and documentation associated with the FAIO Multiplexer p
   </tr>
   <tr>
     <td>FAIO_Multiplexer Assembly Manual</td>
-    <td>Version 1.1</td>
+    <td>Version 1.11</td>
     <td>PDF</td>
     <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Documentation/Build_Manuals/FAIO_Multiplexer_Instructions_Manual.pdf">FAIO_Multiplexer_Instructions_Manual.pdf</a></td>
   </tr>
