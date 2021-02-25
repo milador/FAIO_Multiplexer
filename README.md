@@ -215,3 +215,14 @@ The FAIO Multiplexer switch interface can operate in 4 modes and switch D is use
   3. Setup Arduino IDE for your feather board according to the instructions on Adafruit website
   
   4. Verify and upload firmware code to your Feather Board
+
+
+# License
+
+Creative Commons Attribution-NonCommercial-ShareAlike (CC-BY-NC-SA): A creative commons license that bans commercial use and requires you to release any modified works under this license.
+
+<p align="center">
+<img align="center" src="https://upload.wikimedia.org/wikipedia/commons/b/bd/CC-BY-NC-SA.svg" width="50%" height="50%" alt="CC-BY-NC-SA"/>
+</p>
+
+
