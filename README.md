@@ -219,7 +219,11 @@ The FAIO Multiplexer switch interface can operate in 4 modes and switch D is use
 
 # License
 
-Creative Commons Attribution-NonCommercial-ShareAlike (CC-BY-NC-SA): A creative commons license that bans commercial use and requires you to release any modified works under this license.
+## Creative Commons Attribution-NonCommercial-ShareAlike (CC-BY-NC-SA)
+
+Copyright (c) 2018 Milador
+
+A creative commons license that bans commercial use and requires you to release any modified works under this license.
 
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/milador/milador/master/Assets/IMG/Cc-by-nc-sa_license_icon.png" width="50%" height="50%" alt="CC-BY-NC-SA"/>
