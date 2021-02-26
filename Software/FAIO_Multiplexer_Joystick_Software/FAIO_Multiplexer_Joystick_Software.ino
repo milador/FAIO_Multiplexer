@@ -49,6 +49,7 @@
 
 //Define Switch pins
 #define LED_PIN 12
+
 #define SWITCH1_PIN A0
 #define SWITCH2_PIN A2
 #define SWITCH3_PIN 11
