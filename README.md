@@ -69,6 +69,12 @@ These are all the files and documentation associated with the FAIO Multiplexer p
     <td><a href="https://github.com/milador/FAIO_Multiplexer/blob/master/Components/FAIO_Multiplexer_BOM.csv">FAIO_Multiplexer_BOM.csv</a></td>
   </tr>
   <tr>
+    <td>FAIO_Multiplexer Switch BOM (HTML)</td>
+    <td>March 12, 2021</td>
+    <td>HTML</td>
+    <td><a href="http://milador.ca/projects/faio_multiplexer/bom.html">bom.html</a></td>
+  </tr>
+  <tr>
     <td>FAIO_Multiplexer USB Switch Software</td>
     <td>1.0</td>
     <td>Ino</td>
